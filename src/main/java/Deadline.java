@@ -16,13 +16,13 @@ public class Deadline extends Task {
 
     @Override
     public String toFileFormat() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + by.format(formatter);
     }
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mmma");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
         return "[D]" + super.toString() + " (by: " + by.format(formatter) + ")";
     }
 }

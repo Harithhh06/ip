@@ -20,11 +20,11 @@ public class AddDeadlineCommand extends Command {
         }
         this.description = parts[0];
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             this.by = LocalDateTime.parse(parts[1], formatter);
         }
         catch (DateTimeParseException e) {
-            throw new LunaBotException("Invalid deadline date/time format. Use yyyy-MM-dd HHmm");
+            throw new LunaBotException("Invalid deadline date/time format. Use yyyy-MM-dd HH:mm");
         }
     }
 

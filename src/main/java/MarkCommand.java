@@ -4,7 +4,7 @@ public class MarkCommand extends Command {
     public MarkCommand(String input) throws LunaBotException {
         try {
             // extracts index as a string and converts to an int
-            this.index = Integer.parseInt(input.substring(5)) - 1;
+            this.index = Integer.parseInt(input.substring(5).trim()) - 1;
         }
         catch (NumberFormatException e) {
             // checks if user inout an int

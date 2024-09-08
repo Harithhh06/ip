@@ -38,24 +38,24 @@ public class Storage {
                 LocalDateTime dateTime = null;
 
                 if (arr.length > 3) {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                     dateTime = LocalDateTime.parse(arr[3], formatter);
                 }
 
                 switch (taskType) {
-                    case "T":
-                        taskList.add(new ToDo(description, isDone));
-                        break;
-                    case "D":
-                        taskList.add(new Deadline(description, dateTime, isDone));
-                        break;
-                    case "E":
-                        LocalDateTime from = LocalDateTime.parse(arr[3], DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
-                        LocalDateTime to = LocalDateTime.parse(arr[4], DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
-                        taskList.add(new Event(description, from, to, isDone));
-                        break;
-                    default:
-                        throw new LunaBotException("Invalid task type found in file");
+                case "T":
+                    taskList.add(new ToDo(description, isDone));
+                    break;
+                case "D":
+                    taskList.add(new Deadline(description, dateTime, isDone));
+                    break;
+                case "E":
+                    LocalDateTime from = LocalDateTime.parse(arr[3], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    LocalDateTime to = LocalDateTime.parse(arr[4], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    taskList.add(new Event(description, from, to, isDone));
+                    break;
+                default:
+                    throw new LunaBotException("Invalid task type found in file");
                 }
             }
         }
